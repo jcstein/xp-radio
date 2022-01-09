@@ -57,15 +57,6 @@ const Home: NextPage = () => {
             >
               Tezos: XP\TAPES
             </Button>
-
-            <Button
-              colorScheme="teal"
-              size="lg"
-              rightIcon={<FaTwitter />}
-              onClick={() => router.push("https://twitter.com/CHAD_XP")}
-            >
-              Twitter: Follow CHAD/XP
-            </Button>
             <Button
               colorScheme="teal"
               size="lg"
@@ -102,6 +93,14 @@ const Home: NextPage = () => {
               onClick={() => router.push("https://discord.com/invite/WukMwEZN")}
             >
               Discord: Chat with friends
+            </Button>
+            <Button
+              colorScheme="teal"
+              size="lg"
+              rightIcon={<FaTwitter />}
+              onClick={() => router.push("https://twitter.com/CHAD_XP")}
+            >
+              Twitter: Follow CHAD/XP
             </Button>
             <Button
               colorScheme="teal"
