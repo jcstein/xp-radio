@@ -67,7 +67,7 @@ const Home: NextPage = () => {
                 )
               }
             >
-              Cryptovoxels: BITPIXI'S BAR
+              Cryptovoxels: BITPIXI&apos;S BAR
             </Button>
             <Button
               colorScheme="teal"
