@@ -20,10 +20,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Heading as="h1" size="2xl" colorScheme="blue" mb={3}>
+        <Heading as="h1" size="2xl" color="teal" mb={3}>
           <a href="https://xp-radio.vercel.app">XP/RADIO</a>
         </Heading>
-        <Text mt={3} mb={12} fontSize="xl">
+        <Text mt={3} mb={12} fontSize="xl" color="gray.500">
           Begin your XP in the Metaverse
         </Text>
 
