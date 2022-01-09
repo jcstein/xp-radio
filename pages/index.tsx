@@ -37,8 +37,27 @@ const Home: NextPage = () => {
                 router.push("https://www.clubhouse.com/club/xpradio")
               }
             >
-              Decentralized Flow Sessions on Clubhouse
+              Clubhouse: Decentralized Flow Sessions
             </Button>
+            <Button
+              colorScheme="teal"
+              size="lg"
+              rightIcon={<Icon icon="mdi:ethereum" />}
+              onClick={() => router.push("https://opensea.io/collection/xp")}
+            >
+              Ethereum: XP/TAPES
+            </Button>
+            <Button
+              colorScheme="teal"
+              size="lg"
+              rightIcon={<Icon icon="emojione-monotone:letter-t" />}
+              onClick={() =>
+                router.push("   https://objkt.com/profile/chadxp/collections")
+              }
+            >
+              Tezos: XP\TAPES
+            </Button>
+
             <Button
               colorScheme="teal"
               size="lg"
