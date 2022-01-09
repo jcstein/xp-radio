@@ -3,7 +3,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import React from "react";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
-import { Heading, Text, Stack, Button } from "@chakra-ui/react";
+import { Heading, Text, Stack, Button, Flex } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { FaTwitter } from "react-icons/fa";
 import { Icon } from "@iconify/react";
@@ -20,8 +20,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Heading as="h1" size="2xl">
-          📻 Welcome to <a href="https://xp-radio.vercel.app">XP/RADIO!</a>
+        <Heading as="h1" size="2xl" colorScheme="blue">
+          <a href="https://xp-radio.vercel.app">XP/RADIO</a>
         </Heading>
         <Text mt={8} mb={8} fontSize="xl">
           Begin your XP in the Metaverse
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
                 router.push("https://www.clubhouse.com/club/xpradio")
               }
             >
-              Clubhouse: Decentralized Flow Sessions
+              Clubhouse: Flow Sessions
             </Button>
             <Button
               colorScheme="teal"
@@ -115,10 +115,9 @@ const Home: NextPage = () => {
         </div>
       </main>
       <DarkModeSwitch />
-
-      <footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         Built in ♥️ with Next.js and Chakra UI
-      </footer>
+      </footer> */}
     </div>
   );
 };
