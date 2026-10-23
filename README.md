@@ -1,34 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# XP/RADIO
 
-## Getting Started
+Static Next.js site for XP/RADIO. It is a link page (Clubhouse, Ethereum and Tezos tapes, Cryptovoxels, Twitch, Audius, Discord, Twitter, and Linktree) with a dark-mode toggle. There is no server runtime.
 
-First, run the development server:
+## Local development
+
+Requires Node.js 22.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Production build
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+`next build` writes a static export to `out/` (`output: "export"` in `next.config.js`).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+npm run build
+npm run preview
+```
 
-## Learn More
+`npm run preview` serves the `out/` directory at [http://localhost:3000](http://localhost:3000), which is the same artifact Cloudflare Pages publishes.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy on Cloudflare Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Connect this GitHub repository with Cloudflare’s native Pages Git integration. Pushes to `main` deploy automatically. Do not use the Next.js Workers / OpenNext / `@cloudflare/next-on-pages` preset. This project does not run a Worker.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+| Setting | Value |
+| --- | --- |
+| Project type | Cloudflare Pages |
+| Project name | `xp-radio` |
+| Framework preset | Next.js (Static HTML Export) |
+| Production branch | `main` |
+| Root directory | `/` (repository root) |
+| Build command | `npx next build` |
+| Deploy command | none (Pages uploads the build directory) |
+| Build output directory | `out` |
+| Build environment variables | `NODE_VERSION` = `22` (also pinned by `.node-version`) |
+| Runtime environment variables | none |
+| Bindings | none (no KV, D1, R2, Durable Objects, services, or secrets) |
 
-## Deploy on Vercel
+After the first deploy, add the custom domain `xp-radio.jcstein.dev` on the Pages project. If `jcstein.dev` is on the same Cloudflare account, Pages will create the DNS record. Otherwise add a CNAME for `xp-radio` to the project’s `*.pages.dev` hostname.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Plausible is loaded in the browser with `data-domain="xp-radio.jcstein.dev"`. Add that domain in the Plausible dashboard or page views will be dropped.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Why this is not a Worker
+
+The pages are static. Outbound “radio” links and Iconify icons run in the browser. The old `/api/hello` route was unused `create-next-app` boilerplate, and Pages Router API routes cannot be statically exported, so it was removed. A Worker (OpenNext or vinext) is only needed if a later change requires a server.
+
+## Vercel
+
+Nothing in this repo was a Vercel project config. There was no `vercel.json`, no Vercel environment variables, and no `@vercel/*` dependency. The `.gitignore` entry for `.vercel` is unchanged. The old README deploy section and the in-page links to `xp-radio.vercel.app` pointed at Vercel; those now point at Cloudflare and `xp-radio.jcstein.dev`.

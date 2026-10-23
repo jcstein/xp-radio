@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Script from "next/script";
 import styles from "../styles/Home.module.css";
 import React from "react";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
-import { Heading, Text, Stack, Button, Flex } from "@chakra-ui/react";
+import { Heading, Text, Stack, Button } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { FaTwitter } from "react-icons/fa";
 import { Icon } from "@iconify/react";
@@ -17,12 +18,13 @@ const Home: NextPage = () => {
         <title>XP/RADIO</title>
         <meta name="description" content="XP/RADIO" />
         <link rel="icon" href="/favicon.ico" />
-        <script
-          defer
-          data-domain="xp-radio.vercel.app"
-          src="https://plausible.io/js/plausible.js"
-        ></script>
       </Head>
+      <Script
+        defer
+        data-domain="xp-radio.jcstein.dev"
+        src="https://plausible.io/js/plausible.js"
+        strategy="afterInteractive"
+      />
 
       <main className={styles.main}>
         <Heading
@@ -32,7 +34,7 @@ const Home: NextPage = () => {
           mb={3}
           letterSpacing={"tighter"}
         >
-          <a href="https://xp-radio.vercel.app">XP/RADIO</a>
+          <a href="https://xp-radio.jcstein.dev">XP/RADIO</a>
         </Heading>
         <Text mt={3} mb={12} fontSize="xl" color="gray.500">
           Begin your XP in the Metaverse
@@ -63,7 +65,7 @@ const Home: NextPage = () => {
               size="lg"
               rightIcon={<Icon icon="emojione-monotone:letter-t" />}
               onClick={() =>
-                router.push("   https://objkt.com/profile/chadxp/collections")
+                router.push("https://objkt.com/profile/chadxp/collections")
               }
             >
               Tezos: XP\TAPES
